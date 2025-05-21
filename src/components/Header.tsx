@@ -11,8 +11,8 @@ const Header = () => {
     <header className="w-full bg-white shadow-sm py-4">
       <div className="container flex justify-between items-center">
         <Link to="/" className="flex items-center">
-          <img src="/lovable-uploads/94b2af01-4114-46cb-9a0c-5a355d73d5fa.png" alt="Logo" className="h-8 w-auto" />
-          <span className="ml-2 text-xl font-semibold text-primary">Sistema CNS</span>
+          <img src="/lovable-uploads/94b2af01-4114-46cb-9a0c-5a355d73d5fa.png" alt="Logo" className="h-10 w-auto" />
+          <span className="ml-2 text-xl font-semibold text-primary">Aqua Limpa</span>
         </Link>
 
         <nav className="hidden md:flex space-x-4">
