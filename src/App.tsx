@@ -13,6 +13,10 @@ import ServicosPage from "./pages/ServicosPage";
 import ProdutosPage from "./pages/ProdutosPage";
 import ConfiguracoesPage from "./pages/ConfiguracoesPage";
 import BoletoAutomaticoPage from "./pages/BoletoAutomaticoPage";
+import PerfilPage from "./pages/PerfilPage";
+import TermosPage from "./pages/TermosPage";
+import PrivacidadePage from "./pages/PrivacidadePage";
+import ContatoPage from "./pages/ContatoPage";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -31,6 +35,10 @@ const App = () => (
           <Route path="/produtos" element={<ProdutosPage />} />
           <Route path="/configuracoes" element={<ConfiguracoesPage />} />
           <Route path="/boleto-automatico" element={<BoletoAutomaticoPage />} />
+          <Route path="/perfil" element={<PerfilPage />} />
+          <Route path="/termos" element={<TermosPage />} />
+          <Route path="/privacidade" element={<PrivacidadePage />} />
+          <Route path="/contato" element={<ContatoPage />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
