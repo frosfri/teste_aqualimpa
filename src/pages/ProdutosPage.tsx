@@ -4,14 +4,15 @@ import Layout from '@/components/Layout';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { useToast } from '@/hooks/use-toast';
 
 const produtos = [
   {
     id: 'produto1',
-    nome: 'Produto 1',
-    descricao: 'Sistema de gerenciamento de seguros com emissão automática de boletos e cobranças.',
+    nome: 'Sistema de Gestão',
+    descricao: 'Sistema completo de gerenciamento de clientes, cobrança e relacionamento.',
     caracteristicas: [
-      'Emissão automática de boletos',
+      'Cadastro completo de clientes',
       'Controle de pagamentos',
       'Dashboard administrativo',
       'Relatórios customizados',
@@ -20,7 +21,7 @@ const produtos = [
   },
   {
     id: 'produto2',
-    nome: 'Produto 2',
+    nome: 'Boleto Automático',
     descricao: 'Plataforma de débito automático para pagamentos recorrentes com integração bancária.',
     caracteristicas: [
       'Integração com bancos',
@@ -32,19 +33,57 @@ const produtos = [
   },
   {
     id: 'produto3',
-    nome: 'Produto 3',
-    descricao: 'Solução completa para gestão de cobrança e relacionamento com o cliente.',
+    nome: 'Relatórios Avançados',
+    descricao: 'Solução completa para análise de dados e geração de relatórios gerenciais.',
     caracteristicas: [
-      'CRM integrado',
-      'Histórico de atendimentos',
-      'Automação de cobranças',
-      'Análise de inadimplência',
+      'Análise de performance',
+      'Exportação em diversos formatos',
+      'Visualização de gráficos',
+      'Métricas personalizadas',
+    ],
+    imagem: '/placeholder.svg'
+  },
+  {
+    id: 'produto4',
+    nome: 'Aplicativo Mobile',
+    descricao: 'Acompanhe seus serviços, pagamentos e receba notificações em tempo real.',
+    caracteristicas: [
+      'Disponível para iOS e Android',
+      'Notificações em tempo real',
+      'Acesso a faturas e pagamentos',
+      'Dashboard personalizado',
+    ],
+    imagem: '/placeholder.svg'
+  },
+  {
+    id: 'produto5',
+    nome: 'API de Integração',
+    descricao: 'Integre seus sistemas existentes com nossa plataforma através de APIs seguras.',
+    caracteristicas: [
+      'Documentação completa',
+      'Suporte técnico especializado',
+      'Autenticação OAuth 2.0',
+      'Webhooks personalizáveis',
     ],
     imagem: '/placeholder.svg'
   },
 ];
 
 const ProdutosPage = () => {
+  const { toast } = useToast();
+  
+  const handleSolicitarDemonstracao = (produtoNome: string) => {
+    toast({
+      title: "Solicitação recebida!",
+      description: `Em breve entraremos em contato sobre o produto: ${produtoNome}`,
+    });
+  };
+  
+  const handleSaibaMais = (produtoId: string) => {
+    console.log(`Detalhes solicitados para: ${produtoId}`);
+    // Implementação futura: redirecionar para página detalhada do produto
+  };
+  
   return (
     <Layout>
       <div className="container py-8">
@@ -60,7 +99,7 @@ const ProdutosPage = () => {
         </div>
 
         <Tabs defaultValue="produto1" className="mb-12">
-          <div className="flex justify-center mb-6">
+          <div className="flex justify-center mb-6 overflow-x-auto">
             <TabsList>
               {produtos.map(produto => (
                 <TabsTrigger key={produto.id} value={produto.id}>
@@ -97,8 +136,12 @@ const ProdutosPage = () => {
                   </ul>
                   
                   <div className="flex gap-4">
-                    <Button>Solicitar Demonstração</Button>
-                    <Button variant="outline">Saiba mais</Button>
+                    <Button onClick={() => handleSolicitarDemonstracao(produto.nome)}>
+                      Solicitar Demonstração
+                    </Button>
+                    <Button variant="outline" onClick={() => handleSaibaMais(produto.id)}>
+                      Saiba mais
+                    </Button>
                   </div>
                 </div>
               </div>
@@ -121,7 +164,9 @@ const ProdutosPage = () => {
                 <p className="text-sm text-muted-foreground mb-4">
                   {produto.descricao}
                 </p>
-                <Button variant="outline" className="w-full">Detalhes</Button>
+                <Button variant="outline" className="w-full" onClick={() => handleSaibaMais(produto.id)}>
+                  Detalhes
+                </Button>
               </CardContent>
             </Card>
           ))}
