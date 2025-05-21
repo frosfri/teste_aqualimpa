@@ -11,7 +11,7 @@ const Header = () => {
     <header className="w-full bg-white shadow-sm py-4">
       <div className="container flex justify-between items-center">
         <Link to="/" className="flex items-center">
-          <img src="/lovable-uploads/7508ed2c-bcc4-4518-878a-31cdfc7189d6.png" alt="Logo Aqua Limpa" className="h-12 w-auto" />
+          <img src="/lovable-uploads/7e77bcea-d9d9-4585-83ae-de8f52673721.png" alt="Logo Aqua Limpa" className="h-12 w-auto" />
         </Link>
 
         <nav className="hidden md:flex space-x-4">

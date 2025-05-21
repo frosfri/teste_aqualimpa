@@ -8,6 +8,8 @@ import { Switch } from '@/components/ui/switch';
 import { Button } from '@/components/ui/button';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { useToast } from '@/hooks/use-toast';
+import { Toggle } from "@/components/ui/toggle";
+import { Moon, Sun } from "lucide-react";
 
 const ConfiguracoesPage = () => {
   const { toast } = useToast();
@@ -22,6 +24,9 @@ const ConfiguracoesPage = () => {
     temaPrincipal: 'claro',
     corPrimaria: '#00a8cc',
   });
+
+  // Estado para o modo de aparência (claro/escuro)
+  const [modoAparencia, setModoAparencia] = React.useState('claro');
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -39,6 +44,20 @@ const ConfiguracoesPage = () => {
       title: "Configurações salvas!",
       description: "Suas configurações foram atualizadas com sucesso.",
     });
+  };
+
+  // Função para alternar o modo de aparência
+  const toggleModoAparencia = (modo: string) => {
+    setModoAparencia(modo);
+    setFormData(prev => ({ ...prev, temaPrincipal: modo }));
+    
+    toast({
+      title: `Modo ${modo === 'claro' ? 'Claro' : 'Escuro'} ativado!`,
+      description: `O tema foi alterado para o modo ${modo === 'claro' ? 'claro' : 'escuro'}.`,
+    });
+    
+    // Aqui seria implementada a lógica para mudar o tema do aplicativo
+    document.documentElement.setAttribute('data-theme', modo);
   };
 
   return (
@@ -215,6 +234,29 @@ const ConfiguracoesPage = () => {
                       >
                         Sistema
                       </Button>
+                    </div>
+                  </div>
+                  
+                  {/* Novo seletor de modo de aparência com ícones */}
+                  <div className="space-y-4">
+                    <Label>Modo de Aparência</Label>
+                    <div className="flex justify-center space-x-2">
+                      <Toggle 
+                        pressed={modoAparencia === 'claro'} 
+                        onPressedChange={() => toggleModoAparencia('claro')}
+                        aria-label="Modo Claro"
+                        className="data-[state=on]:bg-blue-100 data-[state=on]:text-blue-800"
+                      >
+                        <Sun className="h-5 w-5 mr-1" /> Modo Claro
+                      </Toggle>
+                      <Toggle 
+                        pressed={modoAparencia === 'escuro'} 
+                        onPressedChange={() => toggleModoAparencia('escuro')}
+                        aria-label="Modo Escuro"
+                        className="data-[state=on]:bg-slate-800 data-[state=on]:text-white"
+                      >
+                        <Moon className="h-5 w-5 mr-1" /> Modo Escuro
+                      </Toggle>
                     </div>
                   </div>
                   

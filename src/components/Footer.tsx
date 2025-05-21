@@ -9,7 +9,7 @@ const Footer = () => {
         <div className="flex flex-col md:flex-row justify-between items-center">
           <div className="mb-4 md:mb-0">
             <div className="flex items-center justify-center md:justify-start">
-              <img src="/lovable-uploads/7508ed2c-bcc4-4518-878a-31cdfc7189d6.png" alt="Logo Aqua Limpa" className="h-8 w-auto mr-2" />
+              <img src="/lovable-uploads/7e77bcea-d9d9-4585-83ae-de8f52673721.png" alt="Logo Aqua Limpa" className="h-8 w-auto mr-2" />
               <p className="text-sm text-muted-foreground">
                 © {new Date().getFullYear()} Aqua Limpa. Todos os direitos reservados.
               </p>
